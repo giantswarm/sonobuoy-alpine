@@ -1,0 +1,18 @@
+version: 2.1
+
+orbs:
+  architect: giantswarm/architect@4.0.0
+
+workflows:
+  go-build:
+    jobs:
+      - architect/push-to-docker:
+          name: push-sonobuoy-alpine-to-quay
+          context: architect
+          image: "quay.io/giantswarm/sonobuoy-alpine"
+          username_envar: "QUAY_USERNAME"
+          password_envar: "QUAY_PASSWORD"
+          filters:
+            # Needed to trigger job also on git tag.
+            tags:
+              only: /^v.*/
