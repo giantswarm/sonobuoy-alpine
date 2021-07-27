@@ -1,4 +1,4 @@
-FROM quay.io/giantswarm/alpine:3.14.0
+FROM quay.io/giantswarm/alpine:3.14.0-giantswarm
 
 ARG SONOBUOY_VERSION=0.52.0
 
